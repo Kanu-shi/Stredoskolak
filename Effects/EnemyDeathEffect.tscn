@@ -1,0 +1,58 @@
+[gd_scene load_steps=14 format=3 uid="uid://kk1rxx8nwhey"]
+
+[ext_resource type="Texture2D" uid="uid://cpeq0ywx821t6" path="res://Effects/EnemyDeathEffect.png" id="1_414q4"]
+[ext_resource type="Script" path="res://Effects/Effect.gd" id="2_h4gkv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_434tv"]
+atlas = ExtResource("1_414q4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwta4"]
+atlas = ExtResource("1_414q4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddsvr"]
+atlas = ExtResource("1_414q4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bvhg"]
+atlas = ExtResource("1_414q4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mi4bl"]
+atlas = ExtResource("1_414q4")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2c01"]
+atlas = ExtResource("1_414q4")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbusi"]
+atlas = ExtResource("1_414q4")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0oos"]
+atlas = ExtResource("1_414q4")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3ayx"]
+atlas = ExtResource("1_414q4")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8jc6"]
+atlas = ExtResource("1_414q4")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xmmis"]
+animations = [{
+"frames": [SubResource("AtlasTexture_434tv"), SubResource("AtlasTexture_rwta4"), SubResource("AtlasTexture_ddsvr"), SubResource("AtlasTexture_0bvhg"), SubResource("AtlasTexture_mi4bl"), SubResource("AtlasTexture_e2c01"), SubResource("AtlasTexture_cbusi"), SubResource("AtlasTexture_t0oos"), SubResource("AtlasTexture_k3ayx"), SubResource("AtlasTexture_o8jc6")],
+"loop": true,
+"name": &"Animate",
+"speed": 15.0
+}]
+
+[node name="EnemyDeathEffect" type="AnimatedSprite2D"]
+frames = SubResource("SpriteFrames_xmmis")
+animation = &"Animate"
+offset = Vector2(0, -8)
+script = ExtResource("2_h4gkv")

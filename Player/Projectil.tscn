@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://rpaiwgqgqwb"]
+
+[ext_resource type="Script" path="res://Player/Projectil.gd" id="1_40g20"]
+[ext_resource type="Texture2D" uid="uid://cawbsk1si7f8s" path="res://Sprites/utok.png" id="1_fbeu1"]
+[ext_resource type="PackedScene" path="res://Overlap/Hitbox.tscn" id="3_4l6jn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnfml"]
+atlas = ExtResource("1_fbeu1")
+region = Rect2(0, 0, 417, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxi0w"]
+atlas = ExtResource("1_fbeu1")
+region = Rect2(417, 0, 417, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4uud"]
+atlas = ExtResource("1_fbeu1")
+region = Rect2(417, 107, 417, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ji76"]
+atlas = ExtResource("1_fbeu1")
+region = Rect2(0, 107, 417, 107)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4pxot"]
+animations = [{
+"frames": [SubResource("AtlasTexture_xnfml"), SubResource("AtlasTexture_vxi0w"), SubResource("AtlasTexture_m4uud"), SubResource("AtlasTexture_0ji76")],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3uryn"]
+radius = 50.9902
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6y5yl"]
+radius = 50.0
+
+[node name="Projectil" type="Area2D"]
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_40g20")
+speed = 500
+
+[node name="Stred" type="Marker2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(156, -3)
+frames = SubResource("SpriteFrames_4pxot")
+playing = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3uryn")
+
+[node name="Hitbox" parent="." instance=ExtResource("3_4l6jn")]
+collision_layer = 8
+
+[node name="CollisionShape2d" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_6y5yl")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+
+[editable path="Hitbox"]

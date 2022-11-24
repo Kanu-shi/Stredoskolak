@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=3 uid="uid://bmx7y42o6m00i"]
+
+[ext_resource type="Script" path="res://World/Prekazka.gd" id="1_k6csy"]
+[ext_resource type="Texture2D" uid="uid://m6esi4wo5ho3" path="res://Sprites/asteroid/1.png" id="2_6n8be"]
+[ext_resource type="Texture2D" uid="uid://1s27xfr4kpuk" path="res://Sprites/asteroid/2.png" id="3_eb17n"]
+[ext_resource type="PackedScene" uid="uid://cf8ptv64he862" path="res://Overlap/Hurtbox.tscn" id="3_iqmbc"]
+[ext_resource type="Texture2D" uid="uid://ba0f0asie08fp" path="res://Sprites/asteroid/3.png" id="4_pmkqp"]
+[ext_resource type="Texture2D" uid="uid://c438v1y5ljmwy" path="res://Sprites/asteroid/4.png" id="5_3vg4s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yse7u"]
+animations = [{
+"frames": [ExtResource("2_6n8be"), ExtResource("3_eb17n"), ExtResource("4_pmkqp"), ExtResource("5_3vg4s")],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_40si8"]
+radius = 65.192
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b4l61"]
+radius = 66.0076
+
+[node name="Prekazka" type="StaticBody2D"]
+script = ExtResource("1_k6csy")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+frames = SubResource("SpriteFrames_yse7u")
+offset = Vector2(8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(5, 7)
+shape = SubResource("CircleShape2D_40si8")
+debug_color = Color(0.913725, 0.247059, 0.388235, 0.419608)
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_iqmbc")]
+visible = false
+collision_mask = 8
+show_hit = false
+
+[node name="CollisionShape2d" parent="Hurtbox" index="0"]
+position = Vector2(6, 6)
+shape = SubResource("CircleShape2D_b4l61")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+
+[editable path="Hurtbox"]

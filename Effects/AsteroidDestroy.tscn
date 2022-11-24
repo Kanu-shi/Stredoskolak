@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://cehdtitt2f6wl"]
+
+[ext_resource type="Texture2D" uid="uid://cs78ganoarry0" path="res://Sprites/asteroid/5.png" id="1_rf1ff"]
+[ext_resource type="Texture2D" uid="uid://cxwtimbgi7ipm" path="res://Sprites/asteroid/6.png" id="2_ibcye"]
+[ext_resource type="Texture2D" uid="uid://chisfftbw8whg" path="res://Sprites/asteroid/7.png" id="3_q717v"]
+[ext_resource type="Script" path="res://Effects/Effect.gd" id="4_cqbph"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_btkrg"]
+animations = [{
+"frames": [ExtResource("1_rf1ff"), ExtResource("2_ibcye"), ExtResource("3_q717v")],
+"loop": false,
+"name": &"Animate",
+"speed": 15.0
+}]
+
+[node name="AsteroidDestroy" type="AnimatedSprite2D"]
+frames = SubResource("SpriteFrames_btkrg")
+animation = &"Animate"
+script = ExtResource("4_cqbph")

@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://d160pmdqd61db"]
+
+[ext_resource type="Texture2D" uid="uid://dxcuff0qjc5bp" path="res://Sprites/background.png" id="1_mgww6"]
+[ext_resource type="PackedScene" uid="uid://cgsll5yr7px8s" path="res://Player/Player.tscn" id="4_o3sor"]
+[ext_resource type="PackedScene" uid="uid://rkiro38k4fbj" path="res://World/Meteority.tscn" id="4_ukxka"]
+[ext_resource type="PackedScene" uid="uid://bmx7y42o6m00i" path="res://World/Prekazka.tscn" id="7_nhf5w"]
+[ext_resource type="PackedScene" uid="uid://cb4tqm47nxk5g" path="res://UI/GameOver.tscn" id="7_poyjh"]
+[ext_resource type="PackedScene" uid="uid://dnvgxwjvw32mv" path="res://UI/HealthUI.tscn" id="8_n8jv3"]
+
+[node name="World" type="Node2D"]
+
+[node name="Pozadie" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_mgww6")
+centered = false
+
+[node name="WorldBorder" type="StaticBody2D" parent="."]
+position = Vector2(575.5, 323)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WorldBorder"]
+polygon = PackedVector2Array(-571.5, -323, 575.5, -323, 574.5, 325, -575.5, 322, -572.5, -324, -742.5, 415, 603.5, 443, 628.5, -390)
+
+[node name="Player" parent="." instance=ExtResource("4_o3sor")]
+position = Vector2(400, 323)
+
+[node name="Prekazky" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Prekazka" parent="Prekazky" instance=ExtResource("7_nhf5w")]
+position = Vector2(699, 420)
+
+[node name="Meteority" parent="." instance=ExtResource("4_ukxka")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HealthUI" parent="UI" instance=ExtResource("8_n8jv3")]
+
+[node name="GameOver" parent="UI" instance=ExtResource("7_poyjh")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
