@@ -1,4 +1,3 @@
-# RPG-tutorial
+Projekt na akciu Stredoskolak pre skolu Stredna odborna skola Zarnovica
 
 
-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
